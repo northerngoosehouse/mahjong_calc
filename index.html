@@ -72,7 +72,8 @@
         </tr>
         <tr>
           <td onclick="document.getElementsByName('numbers')[0].value += '0'">0</td>
-          <td colspan="2"onclick="document.getElementsByName('numbers')[0].value += ','">,</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += '-'">-</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += ','">,</td>
         </tr>
 
       </table>
@@ -81,12 +82,13 @@
     <p class="notes">
       *If the display is disrupted, please buy another device. <br />
       *In case of a tie, players to the left will be ranked higher.<br />
+      *The Penalty for negative points are not included.
     </p>
 
     <script>
       function calculate() {
         let numbers = document.getElementById("numbers").value;
-        let regex = /^(\d+,){3}\d+$/;
+        let regex = /^(-?\d+,){3}-?\d+$/;
         if (!regex.test(numbers)) {
           alert("Please enter 4 numbers separated by commas.");
           return;
