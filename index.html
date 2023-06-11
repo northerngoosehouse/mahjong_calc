@@ -16,8 +16,20 @@
         border: 1px solid #ccc;
         padding: 5px;
         text-align: center;
-        width: 50px;
-        height: 50px;
+        font-size: 20px;
+        width: 80px;
+        height: 80px;
+      }
+      input {
+        font-size: 20px;
+        width: 320px;
+      }
+      .notes{
+        color: lightgrey;
+        font-size: 14px;
+      }
+      #result {
+        font-size: 20px;
       }
     </style> 
 
@@ -26,6 +38,7 @@
 
   <body>
     <h1>Mahjong Point Calculator</h1>
+
     <form onsubmit="calculate(); return false;">
       <label for="numbers">
         Enter 4 numbers separated by commas <br />
@@ -33,7 +46,7 @@
       </label><br />
       <input type="text" id="numbers" name="numbers"/><br /><br />
     </form>
-    <p id="result"></p>
+    <p id="result">&nbsp;</p>
 
 
     <form>
@@ -61,8 +74,12 @@
         </tr>
 
       </table>
-      </form> 
+    </form>
 
+    <p class="notes">
+      *If the display is disrupted, please buy another device. <br />
+      *In case of a tie, players to the left will be ranked higher.
+    </p>
 
     <script>
       function calculate() {
