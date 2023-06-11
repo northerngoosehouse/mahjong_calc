@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mahjong Point Calculator</title>
+  </head>
+  <body>
+    <h1>Mahjong Point Calculator</h1>
+    <form>
+      <label for="numbers">Enter 4 numbers separated by commas:</label><br />
+      <input type="text" id="numbers" name="numbers" /><br /><br />
+      <input type="button" value="Calculate" onclick="calculate()" />
+    </form>
+    <p id="result"></p>
+
+    <script>
+      function calculate() {
+        let numbers = document.getElementById("numbers").value;
+        let regex = /^(\d+,){3}\d+$/;
+        if (!regex.test(numbers)) {
+          alert("Please enter 4 numbers separated by commas.");
+          return;
+        }
+        let nums = numbers.split(",");
+        let sum = nums.reduce((a, b) => Number(a) + Number(b));
+        if (sum !== 1000) {
+          alert("The total is not 1000 points.");
+          return;
+        }
+        let sortedNums = nums.sort((a, b) => b - a);
+        let result = sortedNums.map((num) => Math.floor(num / 10) );
+        result[0] += 10;
+        result[1] -= 20;
+        result[2] -= 40;
+        result[3] -= 50;
+        document.getElementById("result").innerHTML = result.join(",");
+      }
+    </script>
+  </body>
+</html>
