@@ -41,12 +41,14 @@
 
     <form onsubmit="calculate(); return false;">
       <label for="numbers">
-        Enter 4 numbers separated by commas <br />
-        (ex: 452,316,184,48)
+        Enter 4 numbers separated by commas in any order <br />
+        (ex: 452,184,316,48)
       </label><br />
       <input type="text" id="numbers" name="numbers"/><br /><br />
     </form>
+    <span class="notes">Result (1st→2nd→3rd→4th)</span>
     <p id="result">&nbsp;</p>
+
 
 
     <form>
@@ -78,7 +80,7 @@
 
     <p class="notes">
       *If the display is disrupted, please buy another device. <br />
-      *In case of a tie, players to the left will be ranked higher.
+      *In case of a tie, players to the left will be ranked higher.<br />
     </p>
 
     <script>
@@ -101,7 +103,7 @@
         result[1] = (result[1] - 20).toFixed(1);
         result[2] = (result[2] - 40).toFixed(1);
         result[3] = (result[3] - 50).toFixed(1);
-        document.getElementById("result").innerHTML = result.join(",");
+        document.getElementById("result").innerHTML = result.join(", ");
       }
 
       document.addEventListener("DOMContentLoaded", function () {
