@@ -6,6 +6,22 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Mahjong Point Calculator</title>
+
+   
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      td {
+        border: 1px solid #ccc;
+        padding: 5px;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+      }
+    </style> 
+
+
   </head>
 
   <body>
@@ -15,9 +31,38 @@
         Enter 4 numbers separated by commas <br />
         (ex: 452,316,184,48)
       </label><br />
-      <input type="text" id="numbers" name="numbers" /><br /><br />
+      <input type="text" id="numbers" name="numbers"/><br /><br />
     </form>
     <p id="result"></p>
+
+
+    <form>
+      <table>
+        <tr>
+          <td onclick="document.getElementsByName('numbers')[0].value += '7'">7</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += '8'">8</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += '9'">9</td>
+          <td rowspan="2" onclick="document.getElementsByName('numbers')[0].value = document.getElementsByName('numbers')[0].value.slice(0, -1)">←</td>
+        </tr>
+        <tr>
+          <td onclick="document.getElementsByName('numbers')[0].value += '4'">4</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += '5'">5</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += '6'">6</td>
+        </tr>
+        <tr>
+          <td onclick="document.getElementsByName('numbers')[0].value += '1'">1</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += '2'">2</td>
+          <td onclick="document.getElementsByName('numbers')[0].value += '3'">3</td>
+          <td rowspan="2" onclick="calculate()">↵</td>
+        </tr>
+        <tr>
+          <td onclick="document.getElementsByName('numbers')[0].value += '0'">0</td>
+          <td colspan="2"onclick="document.getElementsByName('numbers')[0].value += ','">,</td>
+        </tr>
+
+      </table>
+      </form> 
+
 
     <script>
       function calculate() {
