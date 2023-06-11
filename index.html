@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <title>Mahjong Point Calculator</title>
     <style>
-      /* スマホ用 */
-      @media screen and (max-width: 480px) {
         body {
           font-size: 16px;
           line-height: 1.5;
@@ -55,15 +53,14 @@
           padding-top: 10px;
           border-top: solid #ccc thin;   
         } 
-      }
     </style>
   </head>
   <body>
     <h1>Mahjong Point Calculator</h1>
-    <form>
+    <form onsubmit="calculate(); return false;">
       <label for="numbers">Enter 4 numbers separated by commas (ex: 452,316,184,48)</label><br />
       <input type="text" id="numbers" name="numbers" /><br /><br />
-      <input type="button" value="Calculate" onclick="calculate()" />
+      <input type="submit" value="Calculate" />
     </form>
     <p id="result"></p>
 
@@ -82,13 +79,21 @@
           return;
         }
         let sortedNums = nums.sort((a, b) => b - a);
-        let result = sortedNums.map((num) => Math.floor(num / 10) );
+        let result = sortedNums.map((num) => Math.floor(num / 10));
         result[0] += 10;
         result[1] -= 20;
         result[2] -= 40;
         result[3] -= 50;
         document.getElementById("result").innerHTML = result.join(",");
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          calculate();
+        });
+      });
     </script>
   </body>
 </html>
