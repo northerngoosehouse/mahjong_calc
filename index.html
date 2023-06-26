@@ -31,59 +31,70 @@
       #result {
         font-size: 20px;
       }
+      .square {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      }
     </style> 
 
 
   </head>
 
   <body>
-    <h1>Mahjong Point Calculator</h1>
+    <div class="container">
+        <h1>Mahjong Point Calculator</h1>
 
-    <form onsubmit="calculate(); return false;">
-      <label for="numbers">
-        Enter 4 numbers separated by commas in any order <br />
-        (ex: 452,184,316,48)
-      </label><br />
-      <input type="text" id="numbers" name="numbers"/><br /><br />
-    </form>
-    <span class="notes">Result (1st→2nd→3rd→4th)</span>
-    <p id="result">&nbsp;</p>
+        <form onsubmit="calculate(); return false;">
+            <label for="numbers">
+                Enter 4 numbers separated by commas in any order <br />
+                (ex: 452,184,316,48)
+            </label>
+            <input type="text" id="numbers" name="numbers" style="width:100%;"/>
+        </form>
+
+        <p class="mt-2 mb-4">
+            <span class="notes">Result (1st→2nd→3rd→4th)</span>
+            <br />
+            <span id="result">&nbsp;</span>
+        </p>
 
 
+        <form>
+            <table>
+                <tr>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '7'">7</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '8'">8</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '9'">9</td>
+                <td rowspan="2" onclick="document.getElementsByName('numbers')[0].value = document.getElementsByName('numbers')[0].value.slice(0, -1)">←</td>
+                </tr>
+                <tr>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '4'">4</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '5'">5</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '6'">6</td>
+                </tr>
+                <tr>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '1'">1</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '2'">2</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '3'">3</td>
+                <td rowspan="2" onclick="calculate()">↵</td>
+                </tr>
+                <tr>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '0'">0</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += '-'">-</td>
+                <td class="square" onclick="document.getElementsByName('numbers')[0].value += ','">,</td>
+                </tr>
+            </table>
+        </form>
 
-    <form>
-      <table>
-        <tr>
-          <td onclick="document.getElementsByName('numbers')[0].value += '7'">7</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += '8'">8</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += '9'">9</td>
-          <td rowspan="2" onclick="document.getElementsByName('numbers')[0].value = document.getElementsByName('numbers')[0].value.slice(0, -1)">←</td>
-        </tr>
-        <tr>
-          <td onclick="document.getElementsByName('numbers')[0].value += '4'">4</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += '5'">5</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += '6'">6</td>
-        </tr>
-        <tr>
-          <td onclick="document.getElementsByName('numbers')[0].value += '1'">1</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += '2'">2</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += '3'">3</td>
-          <td rowspan="2" onclick="calculate()">↵</td>
-        </tr>
-        <tr>
-          <td onclick="document.getElementsByName('numbers')[0].value += '0'">0</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += '-'">-</td>
-          <td onclick="document.getElementsByName('numbers')[0].value += ','">,</td>
-        </tr>
+        <p class="notes">
+        *If the display is disrupted, please buy another device. <br />
+        *In case of a tie, players to the left will be ranked higher.<br />
+        *The Penalty for negative points are not included.
+        </p>
 
-      </table>
-    </form>
-
-    <p class="notes">
-      *If the display is disrupted, please buy another device. <br />
-      *In case of a tie, players to the left will be ranked higher.<br />
-      *The Penalty for negative points are not included.
-    </p>
+    </div>
 
     <script>
       function calculate() {
